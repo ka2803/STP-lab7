@@ -3,7 +3,9 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+apply plugin: 'jacoco'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -14,4 +16,11 @@ dependencies {
     compile group:"org.hibernate" ,name:"hibernate-validator" ,version:"6.0.4.Final"
     compile "org.glassfish:javax.el:3.0.1-b08"
 }
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
 
+check.dependsOn jacocoTestReport
